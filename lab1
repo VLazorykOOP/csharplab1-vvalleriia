@@ -1,0 +1,114 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int taskNumber;
+        do
+        {
+            Console.WriteLine("Виберіть номер завдання (1-6), або введіть 0 для виходу:");
+            taskNumber = Convert.ToInt32(Console.ReadLine());
+
+            switch (taskNumber)
+            {
+                case 1:
+                    CalculateTriangleArea();
+                    break;
+                case 2:
+                    CheckIfNumberIsEven();
+                    break;
+                case 3:
+                    CheckPointPosition();
+                    break;
+                case 4:
+                    CalculateDaysToEndOfMonth();
+                    break;
+                case 5:
+                    CalculateDifference();
+                    break;
+                case 6:
+                    CalculateExpressionValue();
+                    break;
+                case 0:
+                    Console.WriteLine("Програма завершила роботу.");
+                    break;
+                default:
+                    Console.WriteLine("Введено невірний номер завдання. Спробуйте ще раз.");
+                    break;
+            }
+        } while (taskNumber != 0);
+    }
+
+    static void CalculateTriangleArea()
+    {
+        Console.WriteLine("Введіть периметр рівностороннього трикутника:");
+        double p = Convert.ToDouble(Console.ReadLine());
+        double sideLength = p / 3;
+        double area = Math.Sqrt(3) / 4 * Math.Pow(sideLength, 2);
+        Console.WriteLine($"Площа трикутника: {area}");
+    }
+
+    static void CheckIfNumberIsEven()
+    {
+        Console.WriteLine("Введіть ціле число:");
+        int number = Convert.ToInt32(Console.ReadLine());
+        if (number % 2 == 0)
+        {
+            Console.WriteLine("Число парне.");
+        }
+        else
+        {
+            Console.WriteLine("Число непарне.");
+        }
+    }
+
+    static void CheckPointPosition()
+    {
+        Console.WriteLine("Введіть координати точки (x, y):");
+        double x = Convert.ToDouble(Console.ReadLine());
+        double y = Convert.ToDouble(Console.ReadLine());
+
+        if ((x >= 0 && x <= 9) && (y >= -9 && y <= 0))
+        {
+            Console.WriteLine("Точка лежить всередині заштрихованої області.");
+        }
+        else if ((x < 0 || x > 9) || (y < -9 || y > 0))
+        {
+            Console.WriteLine("Точка лежить поза заштрихованою областю.");
+        }
+        else
+        {
+            Console.WriteLine("Точка лежить на межі заштрихованої області.");
+        }
+    }
+
+    static void CalculateDaysToEndOfMonth()
+    {
+        Console.WriteLine("Введіть порядковий номер дня місяця:");
+        int day = Convert.ToInt32(Console.ReadLine());
+        int daysInMonth = 30; // Припускаємо, що місяць має 30 днів
+        int daysLeft = daysInMonth - day;
+        Console.WriteLine($"До кінця місяця залишилося {daysLeft} днів.");
+    }
+
+    static void CalculateDifference()
+    {
+        Console.WriteLine("Введіть перше ціле число:");
+        int a = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Введіть друге ціле число:");
+        int b = Convert.ToInt32(Console.ReadLine());
+        int difference = a - b;
+        Console.WriteLine($"Різниця між числами: {difference}");
+    }
+
+    static void CalculateExpressionValue()
+    {
+        Console.WriteLine("Введіть значення x:");
+        double x = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Введіть значення y:");
+        double y = Convert.ToDouble(Console.ReadLine());
+        double result = ((1 / (x * y)) + (1 / Math.Pow(x, 2)) + 1) * (x + y);
+        Console.WriteLine($"Результат виразу: {result}");
+    }
+}
